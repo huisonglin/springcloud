@@ -14,8 +14,8 @@ public class UserController {
 
 	
 	@RequestMapping("/user/{id}/selectOne")
-	public UserDO selectOne(@PathVariable("id") String id,@RequestBody UserDTO dto) {
-		System.out.println("我被调用了！"+id+"------------"+dto);
+	public UserDO selectOne(@PathVariable("id") String id) {
+		System.out.println("我被调用了！"+id+"------------");
 		UserDO userDO = new UserDO();
 		userDO.setAddress("安徽省舒城县");
 		userDO.setAge("18");

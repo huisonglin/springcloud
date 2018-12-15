@@ -15,6 +15,7 @@ public class UserController {
 	
 	@RequestMapping("/getUser")
 	public UserDO getUser() {
+		System.out.println("我是feign");
 		return userService.getUser();
 	}
 }
