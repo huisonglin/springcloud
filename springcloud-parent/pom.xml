@@ -10,6 +10,7 @@
   	<module>springcloud-entity</module>
   	<module>springcloud-comsumer</module>
   	<module>springcloud-zuul</module>
+  	<module>springcloud-api</module>
   </modules>
   
   	<parent>

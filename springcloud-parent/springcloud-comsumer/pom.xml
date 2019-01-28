@@ -21,6 +21,11 @@
 	
 	
   <dependencies>
+    		<dependency>
+  			  <groupId>springcloud-api</groupId>
+  			  <artifactId>springcloud-api</artifactId>
+  			  <version>0.0.1-SNAPSHOT</version>
+  		</dependency>
   		<dependency>
   			  <groupId>springcloud-entity</groupId>
   			  <artifactId>springcloud-entity</artifactId>

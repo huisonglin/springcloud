@@ -16,4 +16,22 @@ public class FeignFallback implements UserFeign{
 		return u;
 	}
 
+	/* (non-Javadoc)
+	 * @see springcloud.com.serviceFeign.UserService#helloWord()
+	 */
+	@Override
+	public String helloWord() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see springcloud.com.serviceFeign.UserService#nihao()
+	 */
+	@Override
+	public String nihao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

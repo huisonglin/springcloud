@@ -16,7 +16,7 @@ import springcloud.com.domain.UserDO;
 import springcloud.com.dto.UserDTO;
 import springcloud.com.service.feign.UserFeign;
 
-@Service
+
 public class UserService {
 
 /*	@Autowired
