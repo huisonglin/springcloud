@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import springcloud.com.domain.UserDO;
 import springcloud.com.serviceFeign.UserService;
+import springcloud.com.serviceFeign.common.CommonInterface;
 
 
-public interface UserFeign  extends UserService{
+@FeignClient("eureka-base")
+public interface UserFeign  extends CommonInterface<UserDO>{
 
 //	@RequestMapping("/user/{id}/selectOne")
 //	public UserDO selectOne(@PathVariable("id") String id);

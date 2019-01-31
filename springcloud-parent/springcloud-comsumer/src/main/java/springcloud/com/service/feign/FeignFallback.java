@@ -1,4 +1,4 @@
-package springcloud.com.service.feign;
+/*package springcloud.com.service.feign;
 
 import org.springframework.stereotype.Component;
 
@@ -16,18 +16,18 @@ public class FeignFallback implements UserFeign{
 		return u;
 	}
 
-	/* (non-Javadoc)
+	 (non-Javadoc)
 	 * @see springcloud.com.serviceFeign.UserService#helloWord()
-	 */
+	 
 	@Override
 	public String helloWord() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
+	 (non-Javadoc)
 	 * @see springcloud.com.serviceFeign.UserService#nihao()
-	 */
+	 
 	@Override
 	public String nihao() {
 		// TODO Auto-generated method stub
@@ -35,3 +35,4 @@ public class FeignFallback implements UserFeign{
 	}
 
 }
+*/

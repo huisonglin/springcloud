@@ -1,5 +1,7 @@
 package springcloud.com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +17,7 @@ import springcloud.com.serviceFeign.UserService;
 public class UserController {
 
 	@Autowired
-	UserService userService;
+	UserFeign userFeign;
 /*	@Autowired
 	UserService userService;
 	@Autowired
@@ -33,8 +35,8 @@ public class UserController {
 	}*/
 	
 	@RequestMapping("/getUser")
-	public String getUser() {
-		System.out.println("我是feign");
-		return userService.helloWord(); 
+	public UserDO getUser() {
+		UserDO userDO = userFeign.selectByPrimaryKey(1L);
+		return userDO;
 	}
 }

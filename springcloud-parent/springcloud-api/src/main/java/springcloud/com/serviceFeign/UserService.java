@@ -28,8 +28,9 @@ public interface UserService {
 		public UserDO selectOne(@PathVariable("id") String id);
 		
 		@RequestMapping("/helloWord")
-		public String helloWord();
+		public String helloWord(UserDO u);
 		
 		@RequestMapping("/nihao")
 		public String nihao();
+		
 }

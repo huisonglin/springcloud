@@ -7,4 +7,13 @@
   </parent>
   <groupId>springcloud-entity</groupId>
   <artifactId>springcloud-entity</artifactId>
+  
+  <dependencies>
+    				<!-- 通用mapper -->
+		 <dependency>
+		    <groupId>tk.mybatis</groupId>
+		    <artifactId>mapper-spring-boot-starter</artifactId>
+		    <version>2.0.3</version>
+		</dependency>
+  </dependencies>
 </project>

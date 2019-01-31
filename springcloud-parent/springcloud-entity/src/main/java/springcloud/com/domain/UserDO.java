@@ -1,20 +1,30 @@
 package springcloud.com.domain;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import tk.mybatis.mapper.annotation.KeySql;
+
+@Table(name = "user")
 public class UserDO {
 
-	private String id;
-	
-	private String name;
-	
-	private String age;
-	
-	private String address;
+	//主键ID
+	@Id
+	@KeySql(useGeneratedKeys=true)
+	 private Long id;
+	 
+	 private String name;
+	 
+	 private String age;
+	 
 
-	public String getId() {
+
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -34,13 +44,9 @@ public class UserDO {
 		this.age = age;
 	}
 
-	public String getAddress() {
-		return address;
-	}
+	
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	
+
+	 
+
 }

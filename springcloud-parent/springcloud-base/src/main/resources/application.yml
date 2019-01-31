@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: eureka-base
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://gjhl.mysqldb.chinacloudapi.cn:3306/kzjx_dev?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: gjhl%zl
+    password: zhanglei@2018
+server:
+  port: 9090
+logging:
+  level:
+    springcloud: debug
+#eureka.client.serviceUrl.defaultZone = http://39.98.36.217:8761/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/	
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  notEmpty: true

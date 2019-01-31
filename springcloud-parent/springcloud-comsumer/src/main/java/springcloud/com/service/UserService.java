@@ -21,15 +21,15 @@ public class UserService {
 
 /*	@Autowired
 	LoadBalancerClient loadBalancerClient; //负载均衡器
-*/	
+	
 	@Autowired
 	UserFeign userFeign;
 	
-/*	@HystrixCommand(fallbackMethod = "checkUserFallbackMethod") // 进行容错处理
-*/	public UserDO getUser() {
+	@HystrixCommand(fallbackMethod = "checkUserFallbackMethod") // 进行容错处理
+	public UserDO getUser() {
 		UserDO selectOne = userFeign.selectOne("11");
 		return selectOne;
-/*		//获取服务实例
+		//获取服务实例
 		ServiceInstance si = loadBalancerClient.choose("eureka-base");
 		//拼接
 		StringBuffer sb = new StringBuffer();
@@ -42,7 +42,7 @@ public class UserService {
 		ParameterizedTypeReference<UserDO> type = new ParameterizedTypeReference<UserDO>() {};
 		ResponseEntity<UserDO> rsp = rt.exchange(sb.toString(), HttpMethod.POST, new HttpEntity<UserDTO>(dto), type);
 		UserDO userDO = rsp.getBody();
-		return userDO;*/
+		return userDO;
 	}
 	
 	public UserDO checkUserFallbackMethod() {
@@ -50,5 +50,5 @@ public class UserService {
 		u.setAddress("出错了");
 		u.setAge("18");
 		return u;
-	}
+	}*/
 }
