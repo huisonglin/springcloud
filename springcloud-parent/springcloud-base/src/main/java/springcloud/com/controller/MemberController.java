@@ -2,14 +2,15 @@
  * 
  */package springcloud.com.controller;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springcloud.com.domain.MemberDO;
 import springcloud.com.mapper.MemberMapper;
+import springcloud.com.vo.AsyncSendSmsTaskVo;
 
 /** 
 * @author : 刘尊亮
@@ -38,6 +39,15 @@ public class MemberController extends BaseController<MemberDO>{
 		// TODO Auto-generated method stub
 		 System.out.println(memberMapper); 
 		 super.mapper = memberMapper; 
+	}
+	
+	@RequestMapping("sendSms")
+	public void sendSms(@RequestBody AsyncSendSmsTaskVo asyncSendSmsTaskVo) {
+		
+		System.out.println("我已经在处理了"+asyncSendSmsTaskVo);
+		
+		MemberDO selectByPrimaryKey = memberMapper.selectByPrimaryKey(119);
+		System.out.println(selectByPrimaryKey);
 	}
 
 

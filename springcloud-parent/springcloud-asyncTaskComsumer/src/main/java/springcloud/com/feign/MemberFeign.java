@@ -1,21 +1,19 @@
 /**
  * 
- */package springcloud.com.service.feign;
+ */package springcloud.com.feign;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import springcloud.com.domain.MemberDO;
 import springcloud.com.serviceFeign.common.CommonInterface;
-import springcloud.com.vo.AsyncTaskVo;
+import springcloud.com.vo.AsyncSendSmsTaskVo;
 
 /** 
 * @date 创建时间：2019年1月29日 下午2:32:43 
@@ -32,9 +30,8 @@ import springcloud.com.vo.AsyncTaskVo;
 @FeignClient(name = "eureka-base")
 public interface MemberFeign{
 	
-				
-	@PostMapping("/asyncTask/produce")
-	public void produceAsyncTask(@RequestBody AsyncTaskVo task);
+	@RequestMapping("/member/sendSms")
+	public void sendSms(@RequestBody AsyncSendSmsTaskVo asyncSendSmsTaskVo);
 	
 	@PostMapping("/member/delete")
 	int delete(@RequestBody MemberDO record);
