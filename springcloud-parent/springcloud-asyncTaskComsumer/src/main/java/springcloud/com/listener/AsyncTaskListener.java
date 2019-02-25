@@ -2,8 +2,10 @@
  * 
  */package springcloud.com.listener;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.http.impl.execchain.MainClientExec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.redis.core.ListOperations;
@@ -11,6 +13,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import redis.clients.jedis.Jedis;
 import springcloud.com.common.Constants;
 
 /** 
@@ -37,14 +40,43 @@ public class AsyncTaskListener implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		System.out.println("我正在监听咯！！！");
 		
-		ListOperations opsForList = redisTemplate.opsForList();
-		while(true) {
-			Object leftPop = opsForList.leftPop(Constants.ASYNC_TASK_QUEUE, 3, TimeUnit.SECONDS);
-			System.out.println("我收到您发来的消息为：" + leftPop);
-		}
+
+			dealMessage();
+		
 
 
 		
 	}
-
+	/**
+	 * 
+	 */
+	private void dealMessage() {
+		try {
+			Jedis jedis = new Jedis("YunJiKuRedis.redis.cache.chinacloudapi.cn", 6379);
+			jedis.auth("/jq+6e4CyqOca8BSAZhv6XqcORRFLDSkqAVhc7V/dt4=");
+			List<String> brpop = jedis.brpop(3000, Constants.ASYNC_TASK_QUEUE);
+			for (String string : brpop) {
+				System.out.println(string);
+			}
+		} catch (Exception e) {
+			System.out.println("正在尝试重连！！！");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			dealMessage();
+		}
+	}
+//	public static void main(String[] args) {
+////		AsyncTaskListener asyncTaskListener= new AsyncTaskListener();
+////		asyncTaskListener.dealMessage();
+//		Jedis jedis = new Jedis("YunJiKuRedis.redis.cache.chinacloudapi.cn", 6379);
+//		jedis.auth("/jq+6e4CyqOca8BSAZhv6XqcORRFLDSkqAVhc7V/dt4=");
+//		List<String> brpop = jedis.blpop(arg)
+//		for (String string : brpop) {
+//			System.out.println(string);
+//		}
+//	}
 }
