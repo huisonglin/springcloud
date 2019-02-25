@@ -9,7 +9,6 @@ import springcloud.com.domain.MemberDO;
 import springcloud.com.serviceFeign.common.CommonInterface;
 
 /** 
-* @author : 刘尊亮
 * @date 创建时间：2019年1月29日 下午2:32:43 
 * @version 1.0 
 * @parameter  
