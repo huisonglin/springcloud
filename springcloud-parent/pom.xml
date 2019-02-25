@@ -11,6 +11,7 @@
   	<module>springcloud-comsumer</module>
   	<module>springcloud-zuul</module>
   	<module>springcloud-api</module>
+  	<module>springcloud-asyncTaskComsumer</module>
   </modules>
   
   	<parent>

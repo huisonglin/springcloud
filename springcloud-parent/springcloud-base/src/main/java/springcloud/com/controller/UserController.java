@@ -5,6 +5,7 @@
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.discovery.converters.Auto;
@@ -26,6 +27,7 @@ import tk.mybatis.mapper.common.Mapper;
  *
  */
  @RestController
+ @RequestMapping("/user")
 public class UserController extends BaseController<UserDO>{
 
 	 @Autowired
@@ -33,7 +35,6 @@ public class UserController extends BaseController<UserDO>{
 
 	 //注入通用mapper对象
 	 @Override
-	@PostConstruct
 	 public void setMapper() {
 		 System.out.println(userMapper); 
 		 super.mapper = userMapper;

@@ -20,7 +20,7 @@ public abstract class BaseController<T> implements CommonInterface<T>{
 	
 	Mapper<T> mapper;
 	
-
+	@PostConstruct
 	public abstract void setMapper( );
 	
 	@Override

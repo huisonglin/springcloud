@@ -27,14 +27,19 @@ import springcloud.com.mapper.MemberMapper;
 @RequestMapping("/member")
 public class MemberController extends BaseController<MemberDO>{
 
+	@Autowired
+	MemberMapper memberMapper;
+
 	/* (non-Javadoc)
 	 * @see springcloud.com.controller.BaseController#setMapper()
 	 */
 	@Override
 	public void setMapper() {
 		// TODO Auto-generated method stub
-		
+		 System.out.println(memberMapper); 
+		 super.mapper = memberMapper; 
 	}
+
 
 
 

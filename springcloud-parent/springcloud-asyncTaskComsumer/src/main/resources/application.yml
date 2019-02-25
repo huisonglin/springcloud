@@ -1,0 +1,38 @@
+#spring.application.name=eureka-comsumer
+#server.port=9094
+#
+##eureka.client.serviceUrl.defaultZone = http://39.98.36.217:8761/eureka/
+#eureka.client.serviceUrl.defaultZone = http://127.0.0.1:8761/eureka/
+
+
+feign:
+  hystrix:
+    enabled: true
+
+spring:
+  application:
+    name: asyncTaskComsumer
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://gjhl.mysqldb.chinacloudapi.cn:3306/kzjx_dev?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: gjhl%zl
+    password: zhanglei@2018
+  redis:
+    database: 0
+    host: YunJiKuRedis.redis.cache.chinacloudapi.cn
+    port: 6379
+    password: /jq+6e4CyqOca8BSAZhv6XqcORRFLDSkqAVhc7V/dt4=
+server:
+  port: 9097
+
+#eureka.client.serviceUrl.defaultZone = http://39.98.36.217:8761/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/	
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  notEmpty: true
+
+
