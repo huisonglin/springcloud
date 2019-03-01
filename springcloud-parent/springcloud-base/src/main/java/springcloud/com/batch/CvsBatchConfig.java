@@ -48,87 +48,87 @@ import springcloud.com.domain.Person;
  * @author Administrator
  *
  */
- @Configuration
- @EnableBatchProcessing
+ //@Configuration
+ //@EnableBatchProcessing
 public class CvsBatchConfig {
 
-	 @Bean
-	 public ItemReader<Person> reader(){
-		 FlatFileItemReader<Person> reader = new FlatFileItemReader<>();
-		 reader.setResource(new ClassPathResource("people.csv"));
-		 reader.setLineMapper(new DefaultLineMapper<Person>() {{
-			 setLineTokenizer(new DelimitedLineTokenizer() {{
-				 setNames(new String[] {"name","age","nation","address"});
-			 }});
-			 setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
-				 setTargetType(Person.class);
-			 }});
-		 }});
-		 return reader;
-	 }
-	 
-	 @Bean
-	 public ItemProcessor<Person, Person> processor(){
-		 CsvItemProcessor processor = new CsvItemProcessor();
-		 processor.setValidator(CsvBeanValidator());
-		 return processor;
-	 }
-	 
-	 @Bean
-	 public ItemWriter<Person> writer(DataSource dataSource){
-		 JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<>();
-		 
-		 writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
-		 
-		 String sql = "insert into person"+"(id,name,age,nation,address)"+"values(null, :name ,:age, :nation, :address)";
-		 writer.setSql(sql);
-		 writer.setDataSource(dataSource);
-		 return writer;
-	 }
-	 
-	 @Bean
-	 public JobRepository jobRepository(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception {
-		 JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
-		 jobRepositoryFactoryBean.setDataSource(dataSource);
-		 jobRepositoryFactoryBean.setTransactionManager(transactionManager);
-		 jobRepositoryFactoryBean.setDatabaseType("mysql");
-		 return jobRepositoryFactoryBean.getObject();
-	 }
-	 
-	 @Bean
-	public SimpleJobLauncher jobLauncher(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception {
-		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-		jobLauncher.setJobRepository(jobRepository(dataSource, transactionManager));
-		return jobLauncher;
-	}
-	 
-	 @Bean
-	 public Job importJob(JobBuilderFactory jobs ,Step s1) {
-		  FlowJobBuilder listener = jobs.get("importJob")
-				 .incrementer(new RunIdIncrementer())
-				 .flow(s1).end().listener(csvJobListener());
-		  Job build = listener.build();
-		  return build;
-	 }
-	 
-	 @Bean
-	 public Step step1(StepBuilderFactory stepBuilderFactory,ItemReader<Person> reader,ItemWriter<Person> writer,
-			 ItemProcessor<Person, Person> processor) {
-		 return stepBuilderFactory.get("step1")
-		 .<Person,Person>chunk(65000)
-		 .reader(reader)
-		 .processor(processor)
-		 .writer(writer)
-		 .build();
-	 }
-	 
-	 @Bean
-	 public CsvJobListener csvJobListener() {
-		 return new CsvJobListener();
-	 }
-	 
-	 @Bean
-	 public Validator<Person> CsvBeanValidator(){
-		 return new CsvBeanValidator<Person>();
-	 }
+//	 @Bean
+//	 public ItemReader<Person> reader(){
+//		 FlatFileItemReader<Person> reader = new FlatFileItemReader<>();
+//		 reader.setResource(new ClassPathResource("people.csv"));
+//		 reader.setLineMapper(new DefaultLineMapper<Person>() {{
+//			 setLineTokenizer(new DelimitedLineTokenizer() {{
+//				 setNames(new String[] {"name","age","nation","address"});
+//			 }});
+//			 setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
+//				 setTargetType(Person.class);
+//			 }});
+//		 }});
+//		 return reader;
+//	 }
+//	 
+//	 @Bean
+//	 public ItemProcessor<Person, Person> processor(){
+//		 CsvItemProcessor processor = new CsvItemProcessor();
+//		 processor.setValidator(CsvBeanValidator());
+//		 return processor;
+//	 }
+//	 
+//	 @Bean
+//	 public ItemWriter<Person> writer(DataSource dataSource){
+//		 JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<>();
+//		 
+//		 writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
+//		 
+//		 String sql = "insert into person"+"(id,name,age,nation,address)"+"values(null, :name ,:age, :nation, :address)";
+//		 writer.setSql(sql);
+//		 writer.setDataSource(dataSource);
+//		 return writer;
+//	 }
+//	 
+//	 @Bean
+//	 public JobRepository jobRepository(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception {
+//		 JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
+//		 jobRepositoryFactoryBean.setDataSource(dataSource);
+//		 jobRepositoryFactoryBean.setTransactionManager(transactionManager);
+//		 jobRepositoryFactoryBean.setDatabaseType("mysql");
+//		 return jobRepositoryFactoryBean.getObject();
+//	 }
+//	 
+//	 @Bean
+//	public SimpleJobLauncher jobLauncher(DataSource dataSource,PlatformTransactionManager transactionManager) throws Exception {
+//		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+//		jobLauncher.setJobRepository(jobRepository(dataSource, transactionManager));
+//		return jobLauncher;
+//	}
+//	 
+//	 @Bean
+//	 public Job importJob(JobBuilderFactory jobs ,Step s1) {
+//		  FlowJobBuilder listener = jobs.get("importJob")
+//				 .incrementer(new RunIdIncrementer())
+//				 .flow(s1).end().listener(csvJobListener());
+//		  Job build = listener.build();
+//		  return build;
+//	 }
+//	 
+//	 @Bean
+//	 public Step step1(StepBuilderFactory stepBuilderFactory,ItemReader<Person> reader,ItemWriter<Person> writer,
+//			 ItemProcessor<Person, Person> processor) {
+//		 return stepBuilderFactory.get("step1")
+//		 .<Person,Person>chunk(65000)
+//		 .reader(reader)
+//		 .processor(processor)
+//		 .writer(writer)
+//		 .build();
+//	 }
+//	 
+//	 @Bean
+//	 public CsvJobListener csvJobListener() {
+//		 return new CsvJobListener();
+//	 }
+//	 
+//	 @Bean
+//	 public Validator<Person> CsvBeanValidator(){
+//		 return new CsvBeanValidator<Person>();
+//	 }
 }
