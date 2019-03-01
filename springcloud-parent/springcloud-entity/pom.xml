@@ -9,7 +9,12 @@
   <artifactId>springcloud-entity</artifactId>
   
   <dependencies>
-    				<!-- 通用mapper -->
+
+    	<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		    <!-- 通用mapper -->
 		 <dependency>
 		    <groupId>tk.mybatis</groupId>
 		    <artifactId>mapper-spring-boot-starter</artifactId>

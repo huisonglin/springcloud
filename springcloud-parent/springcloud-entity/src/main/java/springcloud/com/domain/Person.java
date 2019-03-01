@@ -1,0 +1,63 @@
+/**
+ * 
+ */package springcloud.com.domain;
+
+import javax.validation.constraints.Size;
+
+/** 
+* @author : 刘尊亮
+* @date 创建时间：2019年3月1日 上午10:22:35 
+* @version 1.0 
+* @parameter  
+* @since  
+* @return  
+*/
+/**
+ * @author Administrator
+ *
+ */
+public class Person {
+
+	//@Size(max=4,min=2)
+	private String name;
+	
+	private int age;
+	
+	private String nation;
+	
+	private String address;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getNation() {
+		return nation;
+	}
+
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
+}

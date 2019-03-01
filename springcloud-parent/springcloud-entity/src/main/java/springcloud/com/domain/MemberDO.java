@@ -47,6 +47,11 @@ public class MemberDO implements Serializable {
 		this.nick_name = nick_name;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberDO [id=" + id + ", nick_name=" + nick_name + "]";
+	}
+
 	
 
 	 

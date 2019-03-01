@@ -44,6 +44,11 @@ public class UserDO {
 		this.age = age;
 	}
 
+	@Override
+	public String toString() {
+		return "UserDO [id=" + id + ", name=" + name + ", age=" + age + "]";
+	}
+
 	
 
 

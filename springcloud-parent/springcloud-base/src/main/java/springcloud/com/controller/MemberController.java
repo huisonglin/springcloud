@@ -46,7 +46,7 @@ public class MemberController extends BaseController<MemberDO>{
 		
 		System.out.println("我已经在处理了"+asyncSendSmsTaskVo);
 		
-		MemberDO selectByPrimaryKey = memberMapper.selectByPrimaryKey(119);
+		MemberDO selectByPrimaryKey = memberMapper.selectByPrimaryKey(asyncSendSmsTaskVo.getId());
 		System.out.println(selectByPrimaryKey);
 	}
 
