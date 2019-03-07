@@ -58,6 +58,7 @@ public class TriggerBatchConfig {
 		 reader.setLineMapper(new DefaultLineMapper<Person>() {{
 			 setLineTokenizer(new DelimitedLineTokenizer() {{
 				 setNames(new String[] {"name","age","nation","address"});
+				 setDelimiter("#");
 			 }});
 			 setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
 				 setTargetType(Person.class);
