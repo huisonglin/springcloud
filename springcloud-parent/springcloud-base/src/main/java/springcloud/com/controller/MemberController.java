@@ -28,25 +28,14 @@ import springcloud.com.vo.AsyncSendSmsTaskVo;
 @RequestMapping("/member")
 public class MemberController extends BaseController<MemberDO>{
 
-	@Autowired
-	MemberMapper memberMapper;
 
-	/* (non-Javadoc)
-	 * @see springcloud.com.controller.BaseController#setMapper()
-	 */
-	@Override
-	public void setMapper() {
-		// TODO Auto-generated method stub
-		 System.out.println(memberMapper); 
-		 super.mapper = memberMapper; 
-	}
 	
 	@RequestMapping("sendSms")
 	public void sendSms(@RequestBody AsyncSendSmsTaskVo asyncSendSmsTaskVo) {
 		
 		System.out.println("我已经在处理了"+asyncSendSmsTaskVo);
 		
-		MemberDO selectByPrimaryKey = memberMapper.selectByPrimaryKey(asyncSendSmsTaskVo.getId());
+		MemberDO selectByPrimaryKey = mapper.selectByPrimaryKey(asyncSendSmsTaskVo.getId());
 		System.out.println(selectByPrimaryKey);
 	}
 

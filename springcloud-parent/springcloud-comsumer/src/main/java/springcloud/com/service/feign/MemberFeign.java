@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springcloud.com.domain.MemberDO;
@@ -29,11 +30,11 @@ import springcloud.com.vo.AsyncTaskVo;
  *
  */
 
-@FeignClient(name = "eureka-base")
-public interface MemberFeign{
+@FeignClient(name = "eureka-base",path="member")
+public interface MemberFeign extends CommonInterface<MemberDO>{
 	
 				
-	@PostMapping("/asyncTask/produce")
+/*	@PostMapping("/asyncTask/produce")
 	public void produceAsyncTask(@RequestBody AsyncTaskVo task);
 	
 	@PostMapping("/member/delete")
@@ -60,5 +61,5 @@ public interface MemberFeign{
 	MemberDO selectOneByExample(@RequestBody Object example);
 	
 	@RequestMapping("/member/{key}/selectByPrimaryKey")
-	MemberDO selectByPrimaryKey(@PathVariable("key") Object key);
+	MemberDO selectByPrimaryKey(@PathVariable("key") Object key);*/
 }

@@ -45,6 +45,7 @@ public class AsyncTaskListener implements CommandLineRunner{
 		System.out.println("我正在监听咯！！！");
 		dealMessage();
 	}
+	
 	/**
 	 * 
 	 */

@@ -11,7 +11,6 @@ import com.netflix.discovery.converters.Auto;
 import springcloud.com.domain.UserDO;
 
 import springcloud.com.service.feign.UserFeign;
-import springcloud.com.serviceFeign.UserService;
 
 @RestController
 public class UserController {
@@ -35,8 +34,16 @@ public class UserController {
 	}*/
 	
 	@RequestMapping("/getUser")
-	public UserDO getUser() {
-		UserDO userDO = userFeign.selectByPrimaryKey(1L);
+	public UserDO getUser(Long id) {
+		UserDO userDO = userFeign.selectByPrimaryKey(id);
 		return userDO;
 	}
+	
+	@RequestMapping("/add")
+	public String add(UserDO user) {
+		 int insert = userFeign.insert(user);
+		 return "succeses"+insert;
+	}
+	
+	
 }

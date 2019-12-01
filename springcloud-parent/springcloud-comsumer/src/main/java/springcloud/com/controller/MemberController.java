@@ -35,7 +35,7 @@ public class MemberController {
 	 
 	 @RequestMapping("ss")
 	 public MemberDO member() {
-		 MemberDO selectByPrimaryKey = memberFeign.selectByPrimaryKey(1L);
+		 MemberDO selectByPrimaryKey = memberFeign.selectByPrimaryKey(116L);
 		 return selectByPrimaryKey;
 	 }
 	 
@@ -47,7 +47,7 @@ public class MemberController {
 		 asyncSendSmsTaskVo.setContent("你好世界");
 		 asyncSendSmsTaskVo.setId(id);
 		 asyncTaskVo.setTaskBody((JSONObject)JSON.toJSON(asyncSendSmsTaskVo));
-		 memberFeign.produceAsyncTask(asyncTaskVo);
+//		 memberFeign.produceAsyncTask(asyncTaskVo);
 		 return "SUCCESS";
 	 }
 }

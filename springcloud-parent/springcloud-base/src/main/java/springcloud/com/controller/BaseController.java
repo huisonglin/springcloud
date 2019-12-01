@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,10 +19,9 @@ import tk.mybatis.mapper.common.Mapper;
 
 public abstract class BaseController<T> implements CommonInterface<T>{
 	
+	@Autowired
 	Mapper<T> mapper;
 	
-	@PostConstruct
-	public abstract void setMapper( );
 	
 	@Override
 	public int delete(@RequestBody T record) {
@@ -61,6 +61,10 @@ public abstract class BaseController<T> implements CommonInterface<T>{
 	@Override
 	public T selectByPrimaryKey(@PathVariable("key") Object key) {
 		return mapper.selectByPrimaryKey(key);
+	}
+	
+	public int insert(@RequestBody T example) {
+		 return mapper.insertSelective(example);
 	}
 	
 	

@@ -3,9 +3,9 @@ spring:
     name: eureka-base
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://gjhl.mysqldb.chinacloudapi.cn:3306/kzjx_dev?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
-    username: gjhl%zl
-    password: zhanglei@2018
+    url: jdbc:mysql://localhost:3306/kzjx?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
   batch:
     job:
       enabled: false

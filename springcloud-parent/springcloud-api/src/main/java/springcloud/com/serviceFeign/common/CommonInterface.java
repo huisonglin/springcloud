@@ -4,16 +4,13 @@
 
 import java.util.List;
 
-import org.apache.ibatis.session.RowBounds;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import springcloud.com.domain.UserDO;
-import tk.mybatis.mapper.common.Mapper;
 
 /** 
 * @author : 刘尊亮
@@ -56,8 +53,11 @@ public interface CommonInterface<T>{
 	@RequestMapping("/selectOneByExample")
 	T selectOneByExample(@RequestBody Object example);
 	
-	@RequestMapping("{key}/selectByPrimaryKey")
+	@RequestMapping("/{key}/selectByPrimaryKey")
 	T selectByPrimaryKey(@PathVariable("key") Object key);
+	
+	@RequestMapping("/add")
+	public int insert(@RequestBody T example);
 
 	
 }

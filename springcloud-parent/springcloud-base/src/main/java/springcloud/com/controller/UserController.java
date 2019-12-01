@@ -30,15 +30,7 @@ import tk.mybatis.mapper.common.Mapper;
  @RequestMapping("/user")
 public class UserController extends BaseController<UserDO>{
 
-	 @Autowired
-	 UserMapper userMapper;
 
-	 //注入通用mapper对象
-	 @Override
-	 public void setMapper() {
-		 System.out.println(userMapper); 
-		 super.mapper = userMapper;
-	 }
 
 	 
 
