@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BatchProcessorController {
 
-	 @Autowired
+/*	 @Autowired
 	 JobLauncher jobLauncher;
 	 @Autowired
 	 Job importJob;
@@ -45,5 +45,5 @@ public class BatchProcessorController {
 				 .addString("input.file.name", path).toJobParameters();
 		 jobLauncher.run(importJob, jobParameters);
 		 return "ok";
-	 }
+	 }*/
 }

@@ -4,12 +4,14 @@
 
 import java.util.List;
 
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import springcloud.com.vo.Search;
+
 
 
 /** 
@@ -28,36 +30,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public interface CommonInterface<T>{
 
+	@GetMapping("/get/{id}")
+	public T get(@PathVariable(name="id")Long id);
 	
+	@PostMapping("/add")
+	public Boolean add(@RequestBody T record);
 	
-	@PostMapping("/delete")
-	int delete(@RequestBody T record);
-
-
-	@RequestMapping("/existsWithPrimaryKey")
-	boolean existsWithPrimaryKey(@RequestHeader("key") Object key);
-
-
-	@RequestMapping("/updateByPrimaryKeySelective")
-	int updateByPrimaryKeySelective(@RequestBody T record);
-
-
-	@RequestMapping("/selectCount")
-	int selectCount(@RequestBody T record);
-
-
-	@RequestMapping("/selectByExample")
-	List<T> selectByExample(@RequestBody Object example);
-
-
-	@RequestMapping("/selectOneByExample")
-	T selectOneByExample(@RequestBody Object example);
+	@PostMapping("/update")
+	public Boolean update(@RequestBody T record) throws Exception ;
 	
-	@RequestMapping("/{key}/selectByPrimaryKey")
-	T selectByPrimaryKey(@PathVariable("key") Object key);
+	@GetMapping("/delete/{id}/{updateBy}")
+	public Boolean delete(@PathVariable(name = "id")Long id,@PathVariable(name = "updateBy")String updateBy) throws Exception; 
 	
-	@RequestMapping("/add")
-	public int insert(@RequestBody T example);
+	@PostMapping("/getList")
+	public List<T> getList(@RequestBody Search search);
 
 	
 }

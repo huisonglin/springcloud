@@ -9,6 +9,11 @@ spring:
   batch:
     job:
       enabled: false
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 
 server:
   port: 9090
 logging:

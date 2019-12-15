@@ -46,8 +46,8 @@ import springcloud.com.domain.Person;
  *
  */
  
-@Configuration
-@EnableBatchProcessing
+/*@Configuration
+@EnableBatchProcessing*/
 public class TriggerBatchConfig {
 	
 	@Bean
@@ -133,7 +133,7 @@ public class TriggerBatchConfig {
 		 return stepBuilderFactory.get("step1")
 		 .<Person,Person>chunk(3)
 		 .reader(reader)
-		 .listener(new WriteListener())
+		 /*.listener(new WriteListener())*/
 		 .processor(processor)
 		 .writer(writer)
 		 .build();

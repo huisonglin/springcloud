@@ -35,7 +35,7 @@ public class MemberController {
 	 
 	 @RequestMapping("ss")
 	 public MemberDO member() {
-		 MemberDO selectByPrimaryKey = memberFeign.selectByPrimaryKey(116L);
+		 MemberDO selectByPrimaryKey = memberFeign.get(116L);
 		 return selectByPrimaryKey;
 	 }
 	 

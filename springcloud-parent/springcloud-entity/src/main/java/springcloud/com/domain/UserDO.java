@@ -1,5 +1,7 @@
 package springcloud.com.domain;
 
+import java.util.Date;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,8 +19,65 @@ public class UserDO {
 	 
 	 private String age;
 	 
+    /** 创建者 */
+    private String createBy;
+
+    /** 创建时间 */
+
+    private Date createTime;
+
+    /** 更新者 */
+
+    private String updateBy;
+
+    /** 更新时间 */
+    private Date updateTime;
+    
+    /** 删除表示*/
+    private String delFlag;
+	 
 
 
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public String getDelFlag() {
+		return delFlag;
+	}
+
+	public void setDelFlag(String delFlag) {
+		this.delFlag = delFlag;
+	}
 
 	public Long getId() {
 		return id;
